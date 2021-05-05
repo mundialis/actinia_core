@@ -8,8 +8,9 @@ LABEL maintainer="tawalika@mundialis.de,bettge@mundialis.de,neteler@mundialis.de
 COPY . /src/actinia_core
 
 WORKDIR /src/actinia_core
-RUN git describe --dirty --tags --long --first-parent
-RUN git checkout .
+# RUN git describe --dirty --tags --long --first-parent
+# RUN git checkout .
+ENV SETUPTOOLS_SCM_PRETEND_VERSION=0.99.26
 RUN python3 setup.py sdist bdist_wheel -d /build
 # RUN pip3 wheel -r requirements.txt -w /build
 # RUN python3 -m pep517.build --out-dir /build .
